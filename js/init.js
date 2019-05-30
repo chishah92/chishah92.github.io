@@ -32,45 +32,69 @@
 	    });
 	});
 
-/*----------------------------------------------------- */
-	/* Stat Counter
-  	------------------------------------------------------- */
-     var statSection = $("#stats"),
-     stats = $(".stat-count");
+// /*----------------------------------------------------- */
+// 	/* Stat Counter
+//   	------------------------------------------------------- */
+//      var statSection = $("#stats");
+//      stats = $(".stat-count");
 
- statSection.waypoint({
+//  statSection.waypoint({
 
-    handler: function(event, direction) {
-       if (direction === "down") {       		
-          stats.each(function () {
-             var $this = $(this);
+//     handler: function(event, direction) {
+//        if (direction === "down") {   
+//           alert("chi");    		
+//           stats.each(function () {
+//              var $this = $(this);
+//              $({ Counter: 0 }).animate({ Counter: $this.text() }, {
+//                 duration: 4000,
+//                 easing: 'swing',
+//                 step: function (curValue) {
+//                    $this.text(Math.ceil(curValue));
+//                  }
+//                });
+//           });
 
-             $({ Counter: 0 }).animate({ Counter: $this.text() }, {
-                duration: 4000,
-                easing: 'swing',
-                step: function (curValue) {
-                   $this.text(Math.ceil(curValue));
-                 }
-               });
-          });
+//         } 
 
-        } 
+//         // trigger once only
+//         this.destroy();      	
 
-        // trigger once only
-        this.destroy();      	
-
-    },
+//     },
        
-    offset: "90%"
+//     offset: "90%"
  
- });	
+//  });	
+// /*----------------------------------------------------- */
+// 	/* Skills Bar section
+//   	------------------------------------------------------- */
+//      var skillbarSection = $(".bars");
+
+//    skillbarSection.waypoint({
+
+//     handler: function(event, direction) {
+//        if (direction === "down") {
+//          $(".skills span.bar-expand").css("display", "block");
+//         } 
+
+//         // trigger once only
+//         this.destroy();      	
+
+//     },
+       
+//     offset: "90%"
+ 
+//  });	
 
 /*----------------------------------------------------*/
 /* Highlight the current section in the navigation bar
 ------------------------------------------------------*/
 
-	var sections = $("section");
-	var navigation_links = $("#nav-wrap a");
+   var sections = $("section");
+   var resume = $("#resume .section-intro");
+   var skillbarSection = $(".bars");
+   var navigation_links = $("#nav-wrap a");
+   var statSection = $("#stats");
+   stats = $(".stat-count");
 
 	sections.waypoint({
 
@@ -83,11 +107,41 @@
 			var active_link = $('#nav-wrap a[href="#' + active_section.attr("id") + '"]');
 
          navigation_links.parent().removeClass("current");
-			active_link.parent().addClass("current");
+         active_link.parent().addClass("current");
+         if (direction === "down") {
+           skillbarSection.waypoint({
+             handler: function(event, direction) {
+               $("div.skill span.bar-expand").css("display", "block");
+             },  
+            offset: "59%"
+           });
+           resume.waypoint({
+            handler: function(event, direction) {
+              $("#resume .timeline-wrap").addClass('career-line');
+            },  
+           offset: "59%"
+          });
+           statSection.waypoint({
+             handler: function(event, direction) {
+               stats.each(function () {
+               var $this = $(this);
+               $({ Counter: 0 }).animate({ Counter: $this.text() }, {
+                duration: 4000,
+                easing: 'swing',
+                step: function (curValue) {
+                   $this.text(Math.ceil(curValue));
+                 }
+               });
+              });
+             // trigger once only
+               this.destroy();
+              },
+             offset: "90%"
+           });	        
+         } 
 
 		},
 		offset: '35%'
-
 	});
 
 

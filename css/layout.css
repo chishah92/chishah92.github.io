@@ -38,20 +38,25 @@ body { background: #0f0f0f; }
 	position: relative;
 }
 .section-intro h1 {
-	font-family: "poppins-semibold", serif;
+   font-family: "poppins-semibold", serif;
+   font-weight: bold;
 	font-size: 3.6rem;
 	color: #313131;
 	line-height: 1.25;
 	margin-bottom: 1.2rem;
 }
 .section-intro h5 {
-	color: #FF0077;
+   font-weight: bold;
+   text-transform: uppercase;
+   color: #FF0077;
 	font-size: 1.6rem;
 	line-height: 1.875;
 	margin-bottom: 0.3rem;
 	letter-spacing: .4rem;
 }
-
+span.bar-expand {
+   display: none;
+}
 /**
  * responsive:
  * common styles
@@ -321,13 +326,19 @@ ul#nav li.current a { color: #F06000; }
 }
 #resume .timeline-wrap::before {
 	content: "";
-	display: block;
+	display: none;
 	width: 1px;
-	height: 100%;
+	height: 0;
 	background: rgba(0, 0, 0, 0.1);
 	position: absolute;
 	left: 35%;
-	top: 0;
+   top: 0;
+   transition: height 100s ease-in; 
+}
+#resume .timeline-wrap.career-line::before {
+   display: inline-block;
+   height: 100%;
+   transition: height 100s ease-in;
 }
 #resume .timeline-block {
 	position: relative;
@@ -600,12 +611,12 @@ ul#nav li.current a { color: #F06000; }
    padding-bottom: 60px;
 }
 #portfolio h1 {
-   font: 15px/24px 'opensans-semibold', sans-serif;
+   font: 21px/24px 'opensans-semibold', sans-serif;
    text-transform: uppercase;
    letter-spacing: 1px;
    text-align: center;
    margin-bottom: 48px;
-   color: #95A3A3;
+   color: #1d1f1f;
 }
 
 /* Portfolio Content */
@@ -710,12 +721,12 @@ ul#nav li.current a { color: #F06000; }
 }
 .popup-modal .description-box p {
 	font: 14px/24px 'opensans-regular', sans-serif;
-   color: #A1A1A1;
+   color: rgb(0, 0, 0);
    margin-bottom: 12px;
 }
 .popup-modal .description-box .categories {
    font: 11px/21px 'opensans-light', sans-serif;
-   color: #A1A1A1;
+   color: rgb(0, 0, 0);
    text-transform: uppercase;
    letter-spacing: 2px;
    display: block;
@@ -1280,4 +1291,134 @@ footer .social-links li:first-child { margin-left: 0; }
 	.bgrid {
 		padding: 0;
 	}
+}
+/* ------------------------------------------------------------------- 
+ * ## blog-list - (_common-styles.scss)
+ * ------------------------------------------------------------------- */
+
+ .blog-list {
+   margin-top: 6rem;
+   margin-left: 0;
+}
+
+.blog-list article {
+   margin-bottom: 7.2rem;
+}
+
+.blog-list article:nth-child(2n+1) {
+   padding-right: 50px;
+}
+
+.blog-list article:nth-child(2n+2) {
+   padding-right: 50px;
+}
+
+.blog-list h2 {
+   font-family: "montserrat-medium", sans-serif;
+   font-size: 3rem;
+   line-height: 1.2;
+   margin-top: .3rem;
+   margin-bottom: 2.1rem;
+   padding-bottom: 2.4rem;
+   color: #0D0A0B;
+   position: relative;
+}
+
+.blog-list h2 a {
+   color: #0D0A0B;
+}
+
+.blog-list h2::after {
+   display: block;
+   content: "";
+   position: absolute;
+   bottom: 0;
+   left: 0;
+   height: 1px;
+   width: 80px;
+   background-color: rgba(0, 0, 0, 0.15);
+}
+
+.blog-list .blog-date {
+   font-family: "montserrat-regular", sans-serif;
+   font-size: 1.5rem;
+   color: #862121;
+}
+
+.blog-list .blog-date a {
+   color: #862121;
+}
+
+.blog-list .blog-date a:hover, 
+.blog-list .blog-date a:focus, 
+.blog-list .blog-date a:active {
+   color: #000000;
+}
+
+.blog-list .blog-cat {
+   font-family: "montserrat-medium", sans-serif;
+   font-size: 1.3rem;
+   text-transform: uppercase;
+   letter-spacing: .2rem;
+   color: #000000;
+   margin-top: -.9rem;
+}
+
+.blog-list .blog-cat a {
+   color: #000000;
+}
+
+.blog-list .blog-cat a:hover, 
+.blog-list .blog-cat a:focus, 
+.blog-list .blog-cat a:active {
+   color: #862121;
+}
+
+.blog-list .blog-cat a::after {
+   content: ", ";
+}
+
+.blog-list .blog-cat a:last-child::after {
+   display: none;
+}
+
+
+/* ------------------------------------------------------------------- 
+* responsive:
+* blog-list
+* ------------------------------------------------------------------- */
+
+@media only screen and (max-width: 1200px) {
+   .blog-list article:nth-child(2n+1) {
+       padding-right: 40px;
+   }
+   .blog-list article:nth-child(2n+2) {
+       padding-right: 40px;
+   }
+}
+
+@media only screen and (max-width: 800px) {
+   .blog-list article:nth-child(n) {
+       padding: 0 15px;
+   }
+}
+
+@media only screen and (max-width: 600px) {
+   .blog-list article:nth-child(n) {
+       padding: 0;
+   }
+   .blog-list h2 {
+       font-size: 2.7rem;
+   }
+}
+/* ===================================================================
+ * # blog - (_site-layout.scss)
+ *
+ * ------------------------------------------------------------------- */
+
+ .s-blog {
+   padding-top: 15rem;
+   padding-bottom: 9.6rem;
+   background-color: #FFFFFF;
+   position: relative;
 }

@@ -236,8 +236,8 @@
    #resume .info { text-align: center; }
       
    .bars {
-     width: 75%;
-     margin: 0px 50px; 
+     width: 100%;
+     margin: 0; 
    }
 
 
@@ -374,12 +374,3 @@
    footer .social-links li { margin-left: 14px; }   
 
 }
-
-
-
-
-
-
-
-
-
