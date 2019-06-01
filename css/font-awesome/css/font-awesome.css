@@ -1271,6 +1271,9 @@ fa-graduation-cap:before{
 .fa-skype:before {
   content: "\f17e";
 }
+.fa-drupal:before {
+  content: "\f1a9";
+}
 .fa-foursquare:before {
   content: "\f180";
 }
